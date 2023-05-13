@@ -1,0 +1,23 @@
+@import '../../styles/variables.module.scss';
+
+.buttonLink {
+  padding: 12px;
+  width: max-content;
+  border-radius: $border-radius;
+  background-color: transparent;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  font-size: 20px;
+  fill: white;
+  margin: 4px 0;
+  p{
+    margin: 0 16px;
+  }
+  &:hover{
+    transition: background-color 0.3s ease-in-out;
+    background-color: $grey-color;
+  }
+}
+

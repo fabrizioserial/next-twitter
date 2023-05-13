@@ -1,0 +1,25 @@
+$primary-color: #1D9BF0FF;
+
+$green-color: #1BB384;
+
+$grey-color: #38444DFF;
+$grey-color2: #8b98a5FF;
+
+$light-grey-color: #eff3f4FF;
+
+$black-color1: #0f1419FF;
+
+$background-color1: #15202BFF;
+
+$border-radius: 9999px;
+
+:export {
+  primaryColor: $primary-color;
+  greenColor: $green-color;
+    greyColor: $grey-color;
+  greyColor2: $grey-color2;
+  backgroundColor1: $background-color1;
+  borderRadius: $border-radius;
+  lightGreyColor:$light-grey-color;
+    blackColor1:$black-color1;
+}

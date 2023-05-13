@@ -1,0 +1,9 @@
+.contentContainer{
+  padding-top: 106px;
+  max-height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  .divContainer{
+    height: 200vh;
+  }
+}

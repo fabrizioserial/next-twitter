@@ -1,0 +1,28 @@
+@import '../../styles/variables.module.scss';
+
+.buttonContainer{
+  background-color: $primary-color;
+  font-weight: 700;
+  padding: 0 16px;
+  border-radius: $border-radius;
+  border-style: none;
+  font-size: 17px;
+  cursor: pointer;
+  &:hover{
+    background-color: darken($primary-color, 5%);
+  }
+}
+
+.primary{
+    background-color: $primary-color;
+  color: white;
+
+}
+
+.secondary{
+  background-color: $light-grey-color;
+  color: $black-color1;
+  &:hover{
+    color: white;
+  }
+}

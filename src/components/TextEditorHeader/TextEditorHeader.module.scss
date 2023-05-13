@@ -1,0 +1,33 @@
+@import '../../styles/variables.module.scss';
+@import '../../styles/fontSizes.module.scss';
+
+.bottomContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.rightContainer{
+  width: 100%;
+  flex: 1;
+}
+.input{
+  @include heading2;
+  flex:1;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 16px 0 12px;
+  width: 100%;
+  resize: none;
+
+  &::placeholder{
+    @include heading1;
+    color: $grey-color2;
+    opacity: 1;
+  }
+
+}
+.button{
+  @include heading2;
+  font-weight: 700;
+}

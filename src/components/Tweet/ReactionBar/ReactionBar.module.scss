@@ -1,0 +1,54 @@
+@import "../../../styles/variables.module.scss";
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 16px 0 0;
+}
+
+.reactionContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 20%;
+  .reactionText{
+    font-size: 16px;
+    margin-left: 4px;
+    color: $grey-color2;
+  }
+}
+
+.iconContainer{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: transparent;
+  height: 32px;
+  width: 32px;
+  &:hover{
+    background-color: $grey-color;
+  }
+  &Comment{
+    &:hover{
+      background-color: rgba($primary-color,0.2);
+      .iconComment{
+        fill: $primary-color;
+      }
+    }
+  }
+  &Retweet{
+    &:hover{
+      background-color: rgba($green-color,0.2);
+      .iconRetweet{
+        fill: $green-color;
+      }
+    }
+  }
+}
+
+.iconDefault  {
+  fill: $grey-color2;
+}
