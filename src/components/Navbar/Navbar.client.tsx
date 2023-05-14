@@ -1,7 +1,8 @@
 'use client'
 
-import Button, {ButtonType} from "@/components/Button/Button";
+import Button from "@/components/Button/Button";
 import React from "react";
+import {ButtonType} from "@/components/Button/type";
 
 const TweetButton = () => {
     return(

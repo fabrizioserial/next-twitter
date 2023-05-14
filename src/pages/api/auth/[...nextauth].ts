@@ -1,45 +1,44 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
+import GitHubProvider from "next-auth/providers/github"
+import {PrismaAdapter} from "@next-auth/prisma-adapter";
+import prisma from "@/lib/prisma";
 
 console.log("NextAuth.js")
+
+function getGithubCredentials() {
+    const clientId = process.env.GITHUB_ID
+    const clientSecret = process.env.GITHUB_SECRET
+
+    if (!clientId || clientId.length === 0) {
+        throw new Error('Missing GITHUB_ID')
+    }
+
+    if (!clientSecret || clientSecret.length === 0) {
+        throw new Error('Missing GITHUB_SECRET')
+    }
+
+    return { clientId, clientSecret }
+}
+
 export const authOptions = {
     // Configure one or more authentication providers
     providers: [
-        CredentialsProvider({
-            name: 'Credentials',
-            credentials: {
-                email: { label: "Email", type: "text", placeholder: "Email" },
-                password: {  label: "Password", type: "password" }
-            },
-            async authorize(credentials, req) {
-                const res = await fetch(`http://localhost:8080/api/auth/login`, {
-                    method: 'POST',
-                    body: JSON.stringify(credentials),
-                    headers: { "Content-Type": "application/json" }
-                })
-                const user = await res.json()
 
-                console.log(user)
-
-                // If no error and we have user data, return it
-                if (res.ok && user) {
-                    return user
-                }
-                // Return null if user data could not be retrieved
-                return null
-            }
-        })
+        GitHubProvider({
+            clientId: getGithubCredentials().clientId,
+            clientSecret:getGithubCredentials().clientSecret,
+        }),
     ],
     callbacks: {
         async jwt({ token, user }:any) {
             return { ...token, ...user };
         },
         async session({ session, token, user }:any) {
-            // Send properties to the client, like an access_token from a provider.
-            session.user = token;
-
+            session.user = user
             return session;
         },
     },
+    adapter: PrismaAdapter(prisma),
 }
 export default NextAuth(authOptions)

@@ -8,6 +8,8 @@ export default async function Page() {
         <div style={{height: '100vh', maxWidth:"600px",width:"100%", borderRight: '1px solid #38444DFF', position: 'relative'}}>
             <HeaderHome/>
             <div className={style.contentContainer}>
+
+                {/* @ts-expect-error Server Component */}
                 <TextEditorHeaderContainer/>
                 { /* @ts-ignore */ }
                 <TweetContainer/>

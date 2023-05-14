@@ -3,7 +3,8 @@ import style from './Tweet.module.scss'
 import Image from "next/image";
 import defaultUser from "../../../public/defaultUser.png";
 import ReactionBar from "@/components/Tweet/ReactionBar/ReactionBar";
-import Button, {ButtonType} from "@/components/Button/Button";
+import Button from "@/components/Button/Button";
+import {ButtonType} from "@/components/Button/type";
 
 
 type TweetProps = TweetType & {

@@ -1,39 +1,30 @@
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/pages/api/auth/[...nextauth]";
 import Tweet from "@/components/Tweet/Tweet";
+import prisma from "@/lib/prisma";
+import {Post} from "@prisma/client";
 
-const getTweets = async (token:string) => {
-    const response = await fetch('http://localhost:8080/api/post',{
-        method: 'GET',
-        cache: 'no-cache',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token,
-        }
-    })
-    if (response.status === 401) {
-        return {error: 'Unauthorized'}
-    }
-    return response.json()
+const getTweets = async () => {
+    return prisma.post.findMany();
 }
 
 export default async function TweetContainer(){
     const {user} = await getServerSession(authOptions)
 
-    const data = await getTweets(user?.token ?? "")
+    const data: Post[] = await getTweets()
 
     console.log(data)
 
     return(
         <div>
             {
-                data.map(({id,authorId,author,content,image,createdAt}:any) =>
+                data.map(({id,authorId,content,image,createdAt}:any) =>
                     <Tweet
                         key={id+ '-tweet-'+ authorId}
                         id={id}
                         content={content}
                         createdAt={createdAt}
-                        author={author}
+                        author={{id:authorId, name:user?.name, username:user?.username, avatar: user?.image}}
                         retweet={0}
                         favorite={0}
                         comments={0}/>

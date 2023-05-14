@@ -1,7 +1,5 @@
 'use client'
 
-import Form from "@/components/Form/Form";
-import {InputType} from "@/utils/type";
 import {signIn, signOut, useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 
